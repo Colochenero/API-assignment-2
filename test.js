@@ -24,7 +24,18 @@ it('to test SendREQ with Static object',()=>
         assert.equal(result,response);
     })
 })
-
+it('to test function that returns the city of the static object RESponse', ()=>
+{
+   app.SendREQ().then(result=>{
+       assert.equal(app.getcityname(result),'Cairo')
+   })
+})
+it('to test function that returns the country of the static object RESponse', ()=>
+{
+   app.SendREQ().then(result=>{
+       assert.equal(app.getcountryname(result),'EG')
+   })
+})
 
 
 
