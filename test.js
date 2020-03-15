@@ -36,6 +36,11 @@ it('to test function that returns the country of the static object RESponse', ()
        assert.equal(app.getcountryname(result),'EG')
    })
 })
+it('to test to constructmessage',()=>
+{
+    assert.equal(app.constructMessage('Cairo','EG',50.44,15.80),'Right now, in Cairo, EG the current temperature is 60.44 deg F or 15.80 deg C.');
+}
+)
 
 
 
