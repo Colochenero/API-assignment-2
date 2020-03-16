@@ -1,13 +1,17 @@
 const axios = require('axios');
-
-// API specific settings.
+const http = require('http');
+const url = require('url');
+http.createServer(function(req,res)
+{
+    // API specific settings.
 //const API_URL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const API_KEY = 'b4642b3321c9e21a4e1efc5ffe1b296c';
 
 //const LOCATION_ZIP_CODE = '90001';
 //const COUNTRY_CODE = 'us';
-const cityName = 'CAIRO';
+var cityName= req.url;
+cityName = cityName.replace('/','');
 const x = 459.67;
 const y = 273.15;
 
@@ -15,7 +19,7 @@ const y = 273.15;
 const ENTIRE_API_URL = `${API_URL}${cityName},&appid=${API_KEY}`
 async function SendREQ()
 {
-   var result = await axios.get(ENTIRE_API_URL);
+   var result = await axios.get(ENTIRE_API_URL);  
    return result;
 }
 const getResponse = ()=>{
@@ -32,6 +36,7 @@ const getResponse = ()=>{
            const message = constructMessage(cityName,countryName,fahrenheitTemperature,celciusTemperature);
          
            console.log(message);
+           res.write(message);
            return message;
     
        })
@@ -90,3 +95,6 @@ getcountryname,
 getResponse,
 SendREQ
 };
+
+}).listen(8000);
+
