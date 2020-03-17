@@ -1,54 +1,39 @@
 const axios = require('axios');
 const http = require('http');
 const url = require('url');
-http.createServer(function(req,res)
-{
-    // API specific settings.
-//const API_URL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=';
-const API_KEY = 'b4642b3321c9e21a4e1efc5ffe1b296c';
-
-//const LOCATION_ZIP_CODE = '90001';
-//const COUNTRY_CODE = 'us';
-var cityName= req.url;
-cityName = cityName.replace('/','');
+ const API_KEY = 'b4642b3321c9e21a4e1efc5ffe1b296c';
+ var ENTIRE_API_URL;
 const x = 459.67;
 const y = 273.15;
 
-//const ENTIRE_API_URL = `${API_URL}${LOCATION_ZIP_CODE},${COUNTRY_CODE}&appid=${API_KEY}`;
-const ENTIRE_API_URL = `${API_URL}${cityName},&appid=${API_KEY}`
+
+http.createServer(function(req,res){
+    const cityName= req.url.replace('/','');
+ ENTIRE_API_URL = `${API_URL}${cityName},&appid=${API_KEY}`
+getResponse(res);
+
+}).listen(8000);
 async function SendREQ()
 {
    var result = await axios.get(ENTIRE_API_URL);  
    return result;
 }
-const getResponse = ()=>{
-    return SendREQ().then(response => {
-           // Getting the current temperature and the city from the response object.
-           const kelvinTemperature = getkelvin(response);
-           const cityName = getcityname(response);
-           const countryName = getcountryname(response);
-           // Making K to F and K to C conversions.
-           const fahrenheitTemperature = cfahrenheitTemperature(kelvinTemperature);
-           const celciusTemperature = changeCelciusTemperature(kelvinTemperature);
+const getResponse = (res)=>{
    
+    return SendREQ().then(response => {
            // Building the final message.
-           const message = constructMessage(cityName,countryName,fahrenheitTemperature,celciusTemperature);
-         
+           const message = constructMessage(response);
            console.log(message);
            res.write(message);
+           res.end();
            return message;
     
        })
    
-       .catch(error => console.log('Error', error));    
+       .catch(error => console.log(''));    
         
     }
- getResponse();
-   
-
-
-
     function cfahrenheitTemperature(kelvinTemperature){
         var fahrenheitTemperature = (kelvinTemperature * 9/5) - 459.67;
         return  fahrenheitTemperature.toFixed(2);
@@ -77,14 +62,21 @@ function getcountryname(response)
 {
     return response.data.sys.country;
 }
-function constructMessage(cityName,countryName,fahrenheitTemperature,celciusTemperature)
+function constructMessage(response)
 {
+    const kelvinTemperature = getkelvin(response);
+        const cityName = getcityname(response);
+        const countryName = getcountryname(response);
+        // Making K to F and K to C conversions.
+        const fahrenheitTemperature = cfahrenheitTemperature(kelvinTemperature);
+        const celciusTemperature = changeCelciusTemperature(kelvinTemperature);
  const messageX = `Right now, in \
     ${cityName}, ${countryName} the current temperature is \
     ${fahrenheitTemperature} deg F or \
     ${celciusTemperature} deg C.`.replace(/\s+/g, ' ');
     return messageX;
 }
+
 exports.getResponse = getResponse;
 module.exports={cfahrenheitTemperature,
     changeCelciusTemperature,
@@ -95,6 +87,4 @@ getcountryname,
 getResponse,
 SendREQ
 };
-
-}).listen(8000);
 
