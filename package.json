@@ -4,13 +4,17 @@
   "description": "API programme to get weather info of a city",
   "main": "app.js",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "axios-cache-adapter": "^2.5.0",
+    "memory-cache": "^0.2.0",
+    "sinon": "^9.0.2"
   },
   "devDependencies": {
-    "mocha": "^7.1.0"
+    "mocha": "^7.1.0",
+    "nyc": "^15.0.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "nyc mocha"
   },
   "repository": {
     "type": "git",
