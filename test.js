@@ -77,7 +77,7 @@ it('to test to constructmessage (integration testing)',()=>
 
 }
 )
-/*it('to test get cached data', ()=>
+it('to test get cached data', ()=>
 {
     //console.log(Full_Path);
     assert.equal(app.GetCahedData(res,Full_Path),undefined);
@@ -89,7 +89,7 @@ assert.equal(app.CheckCache(direPath,"CAIRO"),true);
 it('to test CheckCache2',()=>
 {
 assert.equal(app.CheckCache(direPath,"mmm"),false);
-})*/
+})
 it('to test WriteNecachedata',()=>
 {
      assert.equal(app.writeNewCacheData(response,Full_Path),undefined);
@@ -108,17 +108,13 @@ it('to test get countrynamedata',()=>{
     assert.equal(app.getcountrynameData(responseData),'EG')
 })
 
-describe('server', function () {
-  before(function () {
-    app.se.listen(8000);
-  });
+
   it('should return 200', ()=> {
-    http.get('http://localhost:8000', function (resu) {
-      assert.equal(200, resu.statusCode);
-    })});
-  after(function () {
-    app.se.close();
+      var se2 = http.createServer(function(req,resu){
+        assert.equal(200,resu.statusCode);
+      }).listen(8000);
+      se2.close();
   });
-});
+  
 
     app.se.close();

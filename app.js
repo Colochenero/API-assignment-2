@@ -12,7 +12,7 @@ const y = 273.15;
 var se = http.createServer(function(req,res){
     const cityName= req.url.replace('/','');
  ENTIRE_API_URL = `${API_URL}${cityName},&appid=${API_KEY}`;
- Full_Path = __dirname+"\\Caching Requests\\" + cityName + ".txt";
+ Full_Path = __dirname+"//Caching Requests//" + cityName + ".txt";
 const directoryPath = path.join(__dirname, 'Caching Requests');
 Cached = CheckCache(directoryPath,cityName);
 if(Cached)
