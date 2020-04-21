@@ -63,7 +63,7 @@ async function SendREQ()
 }
 const getResponse = (res,Full_Path)=>{
    
-    return SendREQ().then(response =>{
+    return  SendREQ().then(response =>{
           writeNewCacheData(response,Full_Path);
            const message = constructMessage(response);
            console.log(message);
