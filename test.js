@@ -77,7 +77,7 @@ it('to test to constructmessage (integration testing)',()=>
 
 }
 )
-it('to test get cached data', ()=>
+/*it('to test get cached data', ()=>
 {
     //console.log(Full_Path);
     assert.equal(app.GetCahedData(res,Full_Path),undefined);
@@ -89,7 +89,7 @@ assert.equal(app.CheckCache(direPath,"CAIRO"),true);
 it('to test CheckCache2',()=>
 {
 assert.equal(app.CheckCache(direPath,"mmm"),false);
-})
+})*/
 it('to test WriteNecachedata',()=>
 {
      assert.equal(app.writeNewCacheData(response,Full_Path),undefined);
