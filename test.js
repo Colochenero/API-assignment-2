@@ -18,7 +18,7 @@ const responseData= {"coord":{"lon":31.25,"lat":30.06},"weather":[{"id":701,"mai
         },
         statusCode :"200",
       }
-      const Full_Path = __dirname+"\\Caching Requests\\" + "CAIRO" + ".txt";
+      const Full_Path = __dirname+"//Caching Requests//" + "CAIRO" + ".txt";
       const direPath=__dirname+"\\Caching Requests\\";
 
 //test unit 1
@@ -109,12 +109,6 @@ it('to test get countrynamedata',()=>{
 })
 
 
-  it('should return 200', ()=> {
-      var se2 = http.createServer(function(req,resu){
-        assert.equal(200,resu.statusCode);
-      }).listen(8000);
-      se2.close();
-  });
   
 
     app.se.close();
