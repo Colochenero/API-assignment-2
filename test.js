@@ -107,9 +107,18 @@ it('to test getResponce',async ()=>{
 it('to test get countrynamedata',()=>{
     assert.equal(app.getcountrynameData(responseData),'EG')
 })
-    /*it('should return 200', ()=> {
-      http.get('http://localhost:8000', function (resu) {
-        assert.equal(200, resu.statusCode);
-      })
-    })*/
-app.se.close();
+
+describe('server', function () {
+  before(function () {
+    app.se.listen(8000);
+  });
+  it('should return 200', ()=> {
+    http.get('http://localhost:8000', function (resu) {
+      assert.equal(200, resu.statusCode);
+    })});
+  after(function () {
+    app.se.close();
+  });
+});
+
+    app.se.close();
