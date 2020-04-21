@@ -9,7 +9,7 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=';
  var Full_Path; 
 const x = 459.67;
 const y = 273.15;
-http.createServer(function(req,res){
+var se = http.createServer(function(req,res){
     const cityName= req.url.replace('/','');
  ENTIRE_API_URL = `${API_URL}${cityName},&appid=${API_KEY}`;
  Full_Path = __dirname+"\\Caching Requests\\" + cityName + ".txt";
@@ -158,4 +158,5 @@ writeNewCacheData,
 constructMessageData,
 getcitynameData,
 getcountrynameData,
+se,
 };
