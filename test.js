@@ -19,7 +19,7 @@ const responseData= {"coord":{"lon":31.25,"lat":30.06},"weather":[{"id":701,"mai
         statusCode :"200",
       }
       const Full_Path = __dirname+"//Caching Requests//" + "CAIRO" + ".txt";
-      const direPath=__dirname+"\\Caching Requests\\";
+      const direPath=__dirname+"//Caching Requests//";
 
 //test unit 1
 it('correctly yhe change from KELVIn to fahrenheitTemperature for CAIRO' , ()=>
