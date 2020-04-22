@@ -108,9 +108,6 @@ it('to test get countrynamedata',()=>{
     assert.equal(app.getcountrynameData(responseData),'EG')
 })
 
-const chai = require("chai");
-const chaiHttp = require("chai-http");
-
 /*it('should return 200', () => {
     http.get('http://localhost:8000/', function (resu) {
       assert.equal(200, resu.statusCode);
