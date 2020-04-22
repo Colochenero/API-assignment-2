@@ -8,6 +8,7 @@
     "axios-cache-adapter": "^2.5.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "codecov": "^3.6.5",
     "memory-cache": "^0.2.0",
     "sinon": "^9.0.2"
   },
@@ -16,7 +17,8 @@
     "nyc": "^15.0.1"
   },
   "scripts": {
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
     "type": "git",
