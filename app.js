@@ -24,7 +24,7 @@ else
  getResponse(res,Full_Path);
 }
 }).listen(8000);
-
+//this function checks if the this cityname is in the cache or not
 function CheckCache(Full_Path,cityName)
 {
     exist = false
@@ -37,6 +37,7 @@ function CheckCache(Full_Path,cityName)
     });
 return exist;
 }
+//this function gets the cached data from the full path and print it
 function GetCahedData(res,Full_Path)
 {
     Str_Response = fs.readFileSync(Full_Path);
@@ -46,6 +47,7 @@ function GetCahedData(res,Full_Path)
        res.write(message);
        res.end();
 }
+//gets the new data from the public API and put it in the cache
 function writeNewCacheData(response,Full_Path)
 {
     var fs = require('fs');
