@@ -79,7 +79,6 @@ it('to test to constructmessage (integration testing)',()=>
 )
 it('to test get cached data', ()=>
 {
-    //console.log(Full_Path);
     assert.equal(app.GetCahedData(res,Full_Path),undefined);
 })
 it('to test CheckCache',()=>
