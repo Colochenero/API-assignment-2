@@ -4,7 +4,7 @@
   "description": "API programme to get weather info of a city",
   "main": "app.js",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axios-cache-adapter": "^2.5.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
